@@ -29,7 +29,7 @@ function(THREE, psim, collision, util) {
   var SUSP_DAMPING_1 = 100;
   var SUSP_DAMPING_2 = 20000;
   var SUSP_MAX = 0.14;
-  var WHEEL_MASS = 15;
+  var WHEEL_MASS = 20;
   var ENGINE_BRAKE_REGION = 0.5;
   var ENGINE_BRAKE_TORQUE = 0.1;
   var REDLINE_RECOVER_FRACTION = 0.98;
@@ -249,7 +249,7 @@ function(THREE, psim, collision, util) {
     this.engineRedline = config.engine.redline * TWOPI / 60;
     this.engineRecover = this.engineRedline * REDLINE_RECOVER_FRACTION;
     this.engineOverspeed = false;
-    this.enginePowerscale = config.engine.powerscale * 1000;  // kW to W
+    this.enginePowerscale = config.engine.powerscale * 10000;  // kW to W
 
     var finalRatio = config.transmission['final'];
     this.gearRatios = [];
@@ -565,7 +565,7 @@ function(THREE, psim, collision, util) {
     this.hasContact = false;
     for (c = 0; c < this.wheels.length; ++c) {
       var wheel = this.wheels[c];
-      var wheelTorque = wheel.frictionForce.y * 0.3;
+      var wheelTorque = wheel.frictionForce.y * 0.9;
       // Viscous 2-way LSD.
       if (wheel.cfg.drive) {
         var diffSlip = wheel.spinVel - differentialAngVel;

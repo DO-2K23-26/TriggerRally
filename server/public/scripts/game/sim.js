@@ -21,7 +21,7 @@ function(THREE, pubsub, util) {
 
   exports.Sim = function(timeStep) {
     this.pubsub = new pubsub.PubSub();
-    this.gravity = new Vec3(0, 0, -9.81);
+    this.gravity = new Vec3(0, 0, -20);
     this.objects = [];
     this.staticObjects = [];  // Just used for clipping.
     this.timeStep = timeStep;
